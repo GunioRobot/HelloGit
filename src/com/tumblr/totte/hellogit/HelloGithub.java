@@ -34,8 +34,7 @@ public class HelloGithub extends ListActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if("Ç…Ç·Å[ÇÒ".equals(item.getTitle())) {
-            ArrayAdapter<Item> adapter = new ArrayAdapter<Item>(this, 0, crows) {
-                
+            final ArrayAdapter<Item> adapter = new ArrayAdapter<Item>(this, 0, crows) {
                 
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -48,7 +47,7 @@ public class HelloGithub extends ListActivity {
                     
                     Item posItem = getItem(position);
                     if (posItem != null) {
-                        ((TextView) ret.findViewById(R.id.crow)).setText("Ç…Ç·Å[ÇÒ");
+                        ((TextView) ret.findViewById(R.id.crow)).setText(getItem(position).getCrow());
                     }
                     return ret;
                 }
