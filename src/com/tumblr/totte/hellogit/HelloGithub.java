@@ -13,16 +13,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class HelloGithub extends ListActivity {
-    
-    private ArrayList<Item> crows; 
-    
+
+    private ArrayList<Item> crows;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         crows = new ArrayList<Item>();
         setContentView(R.layout.main);
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
@@ -35,23 +35,23 @@ public class HelloGithub extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if("Ç…Ç·Å[ÇÒ".equals(item.getTitle())) {
             final ArrayAdapter<Item> adapter = new ArrayAdapter<Item>(this, 0, crows) {
-                
+
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View ret = convertView;
-                    
+
                     if(convertView == null) {
                         LayoutInflater mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                         ret = mInflater.inflate(R.layout.item_row, null);
                     }
-                    
+
                     Item posItem = getItem(position);
                     if (posItem != null) {
                         ((TextView) ret.findViewById(R.id.crow)).setText(getItem(position).getCrow());
                     }
                     return ret;
                 }
-                
+
             };
             adapter.add(new Item("Ç…Ç·Å[ÇÒ"));
             super.setListAdapter(adapter);
